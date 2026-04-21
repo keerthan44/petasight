@@ -297,7 +297,7 @@ export default function ChatInterface() {
                   disabled={state.isStreaming}
                   className="text-left px-4 py-3 rounded-xl border border-white/[0.08] bg-white/[0.03] hover:bg-white/[0.07] hover:border-white/[0.15] text-sm text-slate-300 transition-colors focus-visible:outline-2 focus-visible:outline-blue-500 focus-visible:outline-offset-2 disabled:opacity-40 disabled:cursor-not-allowed"
                 >
-                  <span className="block text-[10px] font-semibold uppercase tracking-wider text-slate-500 mb-0.5">
+                  <span className="block text-xs font-semibold uppercase tracking-wider text-slate-500 mb-0.5">
                     {p.label}
                   </span>
                   {p.text}
@@ -342,7 +342,7 @@ export default function ChatInterface() {
             placeholder="Ask anything…"
             rows={1}
             aria-describedby="chat-input-hint"
-            aria-disabled={state.isStreaming}
+            aria-disabled={state.isStreaming || undefined}
             className="flex-1 resize-none rounded-xl bg-white/[0.05] border border-white/[0.1] px-4 py-3 text-sm text-slate-100 placeholder-slate-500 disabled:opacity-50 transition-colors focus:outline-2 focus:outline-blue-500 focus:outline-offset-2"
             style={{ maxHeight: "120px" }}
           />
