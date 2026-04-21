@@ -100,6 +100,14 @@ export default function ChatInterface() {
     // onAuthStateChanged in AuthGate picks up the sign-out and returns to login screen
   }
 
+  // Auto-resize textarea to fit content, capped by CSS max-height
+  useEffect(() => {
+    const el = inputRef.current
+    if (!el) return
+    el.style.height = "auto"
+    el.style.height = `${el.scrollHeight}px`
+  }, [state.inputValue])
+
   // Scroll only <main> — never ancestors — so the header stays fixed
   useEffect(() => {
     const el = mainRef.current
@@ -343,8 +351,7 @@ export default function ChatInterface() {
             rows={1}
             aria-describedby="chat-input-hint"
             aria-disabled={state.isStreaming || undefined}
-            className="flex-1 resize-none rounded-xl bg-white/[0.05] border border-white/[0.1] px-4 py-3 text-sm text-slate-100 placeholder-slate-500 disabled:opacity-50 transition-colors focus:outline-2 focus:outline-blue-500 focus:outline-offset-2"
-            style={{ maxHeight: "120px" }}
+            className="flex-1 resize-none rounded-xl bg-white/[0.05] border border-white/[0.1] px-4 py-3 text-sm text-slate-100 placeholder-slate-500 disabled:opacity-50 transition-colors focus:outline-2 focus:outline-blue-500 focus:outline-offset-2 max-h-[200px] overflow-y-auto"
           />
           <span id="chat-input-hint" className="sr-only">
             Press Enter to send. Press Shift+Enter for a new line.
